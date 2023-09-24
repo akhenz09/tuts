@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('https://akhenz09.github.io/tuts/', function () {
     return view('/landingpage/home');
 });
 Route::get('/contact', function () {
