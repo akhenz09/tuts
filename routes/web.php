@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LandingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::get('/shop', function () {
 
 Route::post('/landingpages/store', [LandingPageController::class, 'store'])->name('landingpages.store');
 Route::post('/landingpages/teamstore', [LandingPageController::class, 'teamstore'])->name('teams.store');
+Route::post('/Podcast/videostore', [MediaController::class, 'videostore'])->name('video.store');
 
 
 Route::get('/dashboard', function () {
@@ -45,7 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/landingpages/create', [LandingPageController::class, 'create'])->name('landingpages.create');
     Route::get('/landingpages/teamcreate', [LandingPageController::class, 'teamcreate'])->name('teams.create');
 
-
+    Route::get('/Podcast', [MediaController::class, 'index'])->name('Podcast.index');
+    Route::get('/Podcast/audiocreate', [MediaController::class, 'audiocreate'])->name('audio.create');
+    Route::get('/Podcast/videocreate', [MediaController::class, 'videocreate'])->name('video.create');
 
 });
 
