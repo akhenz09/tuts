@@ -9,12 +9,26 @@ use Illuminate\Support\Facades\Storage;
 
 class LandingPageController extends Controller
 {
-    public function index()
+
+    public function show($page)
     {
-        $landingpages = Landingpage::all();
-        $teams = Team::all();
-        return view('admin.landingpages.index', compact('landingpages', 'teams'));
+
+        switch ($page) {
+            case 'contact':
+                return view('landingpage.contact');
+            case 'product':
+                return view('landingpage.programs');
+            case 'about':
+                return view('landingpage.about');
+            case 'login':
+                    return view('auth.login');
+            case 'register':
+                    return view('auth.register');
+            default:
+                return view('landingpage.home');
+        }
     }
+
 
     public function create()
     {

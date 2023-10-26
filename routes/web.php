@@ -16,17 +16,9 @@ use App\Http\Controllers\LandingPageController;
 |
 */
 
+
 Route::get('/', function () {
     return view('/landingpage/home');
-});
-Route::get('/contact', function () {
-    return view('/landingpage/contact');
-});
-Route::get('/product', function () {
-    return view('/landingpage/programs');
-});
-Route::get('/shop', function () {
-    return view('/landingpage/about');
 });
 
 Route::post('/landingpages/store', [LandingPageController::class, 'store'])->name('landingpages.store');
@@ -37,6 +29,7 @@ Route::post('/Podcast/videostore', [MediaController::class, 'videostore'])->name
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/{page?}', [LandingPageController::class, 'show'])->where('page', '.*');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
